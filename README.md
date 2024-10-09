@@ -39,7 +39,5 @@ Algoritam za generiranje parova je ključno rješenje ovog projekta. Kako funkci
 Algoritam radi tako što prolazi kroz listu od posljednjeg do prvog elementa i za svaki element bira random indeks u nizu, a zatim zamijeni taj element sa trenutnim elementom.
 
 <div style="text-align: center;">
-    <img src="IMG_6875.jpg" alt="Fisher Yates algoritam" width="300" />
+    <img src="IMG_6875.JPG" alt="Fisher Yates algoritam" width="300" />
 </div>
-
-- 
