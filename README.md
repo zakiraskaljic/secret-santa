@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Secret Santa 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Opis Projekta
 
-## Available Scripts
+Ova aplikacija implementira sistem za "Secret Santa" igru, gdje uposlenici anonimno daruju jedni druge. Projekat koristi React za frontend. Postoje dvije uloge korisnika: Administrator i Uposlenik. Administratori imaju mogućnost kreiranja i pregleda lista uparenih uposlenika, dok ostali mogu vidjeti samo osobu kojoj treba da uzmu poklon.
 
-In the project directory, you can run:
+### Pravila:
 
-### `npm start`
+-   Uposlenik **ne može** kao par izvući **samog sebe**;
+-   Isti par se **ne može** pojaviti **više puta** u listi;
+-   Svakim generisanjem liste se treba dobiti **drugačija kombinacija** parova.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pokretanje koda
+1. git clone https://github.com/zakiraskaljic/secret-santa.git
+2. cd secret-santa
+3. npm install 
+4. npm start 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Administrator username: zakira
+Ostali korisnici prate template ime  'John Doe',  username: john.doe
 
-### `npm test`
+## Generisanje parova
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Algoritam za generiranje parova je ključno rješenje ovog projekta. Kako funkcioniše:
 
-### `npm run build`
+1.  **Nasumično Miješanje Zaposlenika**: Prvo se lista zaposlenika (osim administratora) nasumično izmiješa kako bi se osiguralo da redoslijed bude drugačiji svaki put.
+- Funkcija  **shuffleArray** koristi Fisher-Yates algoritam za nasumično miješanje elemenata u nizu.
+2.  **Umetanje Administratora**: Administrator se uvijek dodaje u listu zaposlenika, ali na nasumičnoj poziciji.   
+    -   Funkcija **insertAtRandomPosition** nasumično umeće administratora na neku poziciju u nizu
+3.   **Kreiranje Parova**: Parovi se kreiraju tako da se svakom zaposleniku dodijeli naredni zaposlenik iz niza kao osoba kojoj treba kupiti poklon. Posljednji zaposlenik dobija prvog zaposlenika kao par.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<div style="text-align: center;">
+    <img src="IMG_6873.jpg" alt="Generisanje parova" width="300" />
+</div>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Fisher-Yates algoritam
 
-### `npm run eject`
+Algoritam radi tako što prolazi kroz listu od posljednjeg do prvog elementa i za svaki element bira random indeks u nizu, a zatim zamijeni taj element sa trenutnim elementom.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<div style="text-align: center;">
+    <img src="IMG_6875.jpg" alt="Fisher Yates algoritam" width="300" />
+</div>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 
