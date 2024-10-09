@@ -16,8 +16,8 @@ Ova aplikacija implementira sistem za "Secret Santa" igru, gdje uposlenici anoni
 3. npm install 
 4. npm start 
 
-Administrator username: zakira
-Ostali korisnici prate template ime  'John Doe',  username: john.doe
+- Administrator username: zakira
+- Ostali korisnici prate template ime  'John Doe',  username: john.doe
 
 ## Generisanje parova
 
