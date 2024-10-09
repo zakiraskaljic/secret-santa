@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React, { useContext, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider, AuthContext } from './components/AuthContext';
+import SecretSanta from './components/SecretSanta';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 import './App.css';
 
-function App() {
+const App = () => {
+  const { user } = useContext(AuthContext); 
+  const [pairs, setPairs] = useState([]);
+
+  if (!user) {
+    return null; 
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main-container'>
+      <Dashboard pairs={pairs} setPairs={setPairs} />
+      {user.role === 'Administrator' && <SecretSanta setPairs={setPairs} />}
     </div>
   );
-}
+};
 
-export default App;
+const MainApp = () => (
+  <AuthProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<App />} /> 
+      </Routes>
+    </Router>
+  </AuthProvider>
+);
+
+export default MainApp;
